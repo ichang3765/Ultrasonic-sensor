@@ -1,5 +1,13 @@
-input.onButtonPressed(Button.A, function () {
-    if (maqueen.Ultrasonic(PingUnit.Centimeters) < 20 && maqueen.Ultrasonic(PingUnit.Centimeters) != 0) {
+let obstacle1 = false
+basic.showLeds(`
+    . # . # .
+    . . . . .
+    # . . . #
+    . # # # .
+    . . . . .
+    `)
+basic.forever(function () {
+    if (maqueen.Ultrasonic(PingUnit.Centimeters) < 5 && maqueen.Ultrasonic(PingUnit.Centimeters) != 0) {
         obstacle1 = Math.randomBoolean()
         if (obstacle1 == true) {
             maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 255)
@@ -14,15 +22,4 @@ input.onButtonPressed(Button.A, function () {
     } else {
         maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 160)
     }
-})
-let obstacle1 = false
-basic.showLeds(`
-    . # . # .
-    . . . . .
-    # . . . #
-    . # # # .
-    . . . . .
-    `)
-basic.forever(function () {
-	
 })
